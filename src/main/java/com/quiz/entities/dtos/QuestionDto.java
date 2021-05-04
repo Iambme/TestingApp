@@ -22,7 +22,7 @@ public class QuestionDto {
     private String title;
     private String description;
     private String image;
-    @NotNull
+
     private Set<AnswerDto> answers;
 
 }

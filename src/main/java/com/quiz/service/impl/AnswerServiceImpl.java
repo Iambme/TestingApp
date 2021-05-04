@@ -25,7 +25,8 @@ public class AnswerServiceImpl implements AnswerService {
     @Override
     public void addAnswerToQuestion(AnswerDto answerDto, Integer questionId) throws NotFoundException {
         QuestionDto questionDto = questionService.findQuestionById(questionId);
-        answerRepository.save(answerConverterDto.fromDtoToEntity(answerDto));
+//        answerRepository.save(answerConverterDto.fromDtoToEntity(answerDto));
+        answerDto.setQuestionDto(questionDto);
         Set<AnswerDto> answers = questionDto.getAnswers();
         answers.add(answerDto);
         questionDto.setAnswers(answers);

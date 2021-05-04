@@ -26,7 +26,8 @@ public class Question {
     @Column(name = "image")
     private String image;
     @OneToMany(fetch = FetchType.EAGER,
-            cascade = CascadeType.REFRESH)
+            cascade = CascadeType.ALL)
     private Set<Answer> answers;
+
 
 }

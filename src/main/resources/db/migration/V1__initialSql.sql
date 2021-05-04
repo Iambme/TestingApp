@@ -27,12 +27,6 @@ create table if not exists users_roles
             references users
 );
 
-insert into role(name)
-values ('ROLE_ADMIN');
-insert into role(name)
-values ('ROLE_TUTOR');
-insert into role(name)
-values ('ROLE_STUDENT');
 create table if not exists quizzes
 (
     id      serial
@@ -55,8 +49,18 @@ create table if not exists questions
 );
 create table if not exists answers
 (
-    id         serial
+    id          serial
         constraint answers_pk primary key,
-    text       varchar(255),
-    is_correct boolean
+    text        varchar(255),
+    is_correct  boolean,
+    question_id int,
+    constraint questions_fk foreign key (question_id) references questions (id)
 );
+
+insert into role(name)
+values ('ROLE_ADMIN');
+insert into role(name)
+values ('ROLE_TUTOR');
+insert into role(name)
+values ('ROLE_STUDENT');
+
