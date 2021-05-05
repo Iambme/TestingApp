@@ -26,7 +26,12 @@ public class Quiz {
     @Column(name = "subject")
     private String subject;
     @ManyToMany(fetch = FetchType.EAGER,
-            cascade = CascadeType.REFRESH)
+            cascade = CascadeType.REFRESH
+    )
+    @JoinTable(
+            name = "quizzes_questions",
+            joinColumns = @JoinColumn(name = "quizzes_id"),
+            inverseJoinColumns = @JoinColumn(name = "questions_id"))
     private Set<Question> questions;
     @Column(name = "user_id")
     private Integer userId;

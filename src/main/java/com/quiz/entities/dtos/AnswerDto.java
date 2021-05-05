@@ -22,5 +22,6 @@ public class AnswerDto {
     @NotNull
     private boolean correct;
 
+    private QuestionDto questionDto;
 
 }

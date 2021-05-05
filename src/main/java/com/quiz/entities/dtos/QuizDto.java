@@ -22,7 +22,7 @@ public class QuizDto {
     private String title;
     @NotNull
     private String subject;
-    @NotNull
+
     private Set<QuestionDto> questions;
     private Integer userId;
     private String description;

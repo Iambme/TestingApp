@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 
 @Data
@@ -24,8 +25,18 @@ public class Answer {
     private boolean correct;
     //TODO:create relationship
     @ManyToOne
-    @JoinColumn(name="question_id", nullable=false)
     private Question question;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Answer answer = (Answer) o;
+        return correct == answer.correct && text.equals(answer.text) && question.equals(answer.question);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(text, correct, question);
+    }
 }
